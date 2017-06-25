@@ -15,6 +15,13 @@ public class App
 
         System.out.println(a + " * " + b + " = " + basicCalculator.product(a,b));
 
+        // In reality I guess we'd need to provide the OrderService with a SOurce
+        OrderSource theOrderSource = new OrderSourceImpl();
+        OrderService theOrderService = new OrderServiceImpl();
+        theOrderService.setOrderSource(theOrderSource);
+
+        String theOutcome =theOrderService.showOrders(1);
+        System.out.println(theOutcome);
 
     }
 }

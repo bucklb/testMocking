@@ -31,6 +31,21 @@ public class BasicCalculatorTest
 //        assertTrue( (p==a*b) );
     }
 
+    // Should we handle stupidly large numbers?
+    @Test
+    public void testProductOutOfBounds()
+    {
+        double a=Double.MAX_VALUE,b=Double.MAX_VALUE, p;
+        BasicCalculator testCalculator=new BasicCalculator();
+        p=testCalculator.product(a,b);
+
+        Assert.assertEquals(p,a*b,0.0);
+        System.out.println(p);
+//        assertTrue( (p==a*b) );
+    }
+
+
+
     // Vanilla test
     @Test
     public void testFraction(){
