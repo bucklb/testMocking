@@ -17,6 +17,10 @@ public class OrderSourceImpl implements OrderSource {
 
     // Allow a test of argument capture
     public long addOrder(Order theOrder) {
+
+        // Flag that the real class got called
+        System.out.println("Adding an ordet to the list !!!");
+
         orderList.add(theOrder);
         return orderList.size();
     }

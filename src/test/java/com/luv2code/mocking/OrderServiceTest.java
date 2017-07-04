@@ -8,9 +8,7 @@ import org.mockito.Mockito;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.mockito.Mockito.atLeast;
-import static org.mockito.Mockito.atMost;
-import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.*;
 
 /**
  * Created by buckl on 25/06/2017.
@@ -149,6 +147,60 @@ public class OrderServiceTest {
         Assert.assertEquals(order.getOrderCategory(),orderCategory);
         Assert.assertEquals(order.getOrderQuantity(),orderQuantity);
     }
+
+    // Get at lest a partial handle on Spy ...
+    //
+    @Test
+    public void testOrderService_usingSpy(){
+
+        // Want to test the class/methods
+        OrderService target=new OrderServiceImpl();
+
+        // Put the implementation within a spy (so the normal functionality is used unless overridden)
+        OrderSourceImpl orderSourceImpl=new OrderSourceImpl();
+        OrderSourceImpl spyOrderSource=Mockito.spy(orderSourceImpl);
+        Mockito.when(spyOrderSource.getOrders(Mockito.anyLong())).thenReturn(getTestOrders());
+
+        // Normal mocking, for comparison
+        OrderSource mockOrderSource= org.mockito.Mockito.mock(OrderSource.class);
+        Mockito.when(mockOrderSource.getOrders(666)).thenReturn(getTestOrders());
+
+
+        // Assume it still needs to be injected
+        target.setOrderSource(spyOrderSource);
+
+        // The create order should call the REAL class method
+        System.out.println("Really should see message from real createOrder method here");
+        target.createOrder(1,"One");
+
+        // The orderCount calls getOrders, which will use the mocked/spy version. Not the real one
+        Assert.assertEquals(target.orderCount(666),666+668);
+
+        // Now do some full on mocking
+        target.setOrderSource(mockOrderSource);
+
+        // The create order should call the REAL class method
+        System.out.println("Really should see NO message as we're using the MOCK (not spy)");
+        target.createOrder(2,"Two");
+
+        // The orderCount calls getOrders, which will use the mocked/spy version. Not the real one
+        Assert.assertEquals(target.orderCount(666),666+668);
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
 
 
 }
