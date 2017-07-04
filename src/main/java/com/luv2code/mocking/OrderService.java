@@ -13,4 +13,11 @@ public interface OrderService {
 
     public void setOrderSource(OrderSource  theOrderSource);
 
+    // allow an order to be created
+    public void createOrder(long theQuantity, String theCategory );
+
+
+
+
+
 }

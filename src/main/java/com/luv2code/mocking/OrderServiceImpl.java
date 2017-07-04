@@ -43,4 +43,14 @@ public class OrderServiceImpl implements OrderService{
     public void setOrderSource(OrderSource theOrderSource) {
         this.orderSource=theOrderSource;
     }
+
+    // Want to test the capture thing
+    public void createOrder(long theQuantity, String theCategory) {
+
+        Order order=new Order();
+        order.setOrderQuantity(theQuantity);
+        order.setOrderCategory(theCategory);
+
+        orderSource.addOrder(order);
+    }
 }

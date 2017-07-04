@@ -15,13 +15,21 @@ public class App
 
         System.out.println(a + " * " + b + " = " + basicCalculator.product(a,b));
 
-        // In reality I guess we'd need to provide the OrderService with a SOurce
-        OrderSource theOrderSource = new OrderSourceImpl();
+        // In reality I guess we'd need to provide the OrderService with a Source
         OrderService theOrderService = new OrderServiceImpl();
+
+        // Will need something to take/return the orders.  Inject it
+        OrderSource theOrderSource = new OrderSourceImpl();
         theOrderService.setOrderSource(theOrderSource);
+
+        // Might as well give it a modicum of data
+        theOrderService.createOrder(69,"Condom");
+
 
         String theOutcome =theOrderService.showOrders(1);
         System.out.println(theOutcome);
+
+        System.out.println("total item = "+theOrderService.orderCount(0));
 
     }
 }

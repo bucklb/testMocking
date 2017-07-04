@@ -10,4 +10,8 @@ public interface OrderSource {
     // a mechanism to return orders
     public List<Order> getOrders(long customerId);
 
+    // allow an order to be created
+    public long addOrder(Order theOrder);
+
+
 }

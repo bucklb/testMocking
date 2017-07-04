@@ -8,12 +8,16 @@ import java.util.List;
  */
 public class OrderSourceImpl implements OrderSource {
 
+    List<Order> orderList = new ArrayList<Order>();
+
+    // Just return the lsit (that we could have go from anywhere
     public List<Order> getOrders(long customerId){
-        Order order = new Order();
-        order.setOrderQuantity(69);
-        order.setOrderCategory("Sixty Nine");
-        List<Order> theList=new ArrayList<Order>();
-        theList.add(order);
-        return theList;
+        return orderList;
+    }
+
+    // Allow a test of argument capture
+    public long addOrder(Order theOrder) {
+        orderList.add(theOrder);
+        return orderList.size();
     }
 }
