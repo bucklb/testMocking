@@ -24,7 +24,6 @@ public class OrderServiceImpl implements OrderService{
 //        return this.orderSource.getOrders(1).toString();
         return theShow;
 
-
     }
 
     public long orderCount(long lId){
@@ -52,5 +51,13 @@ public class OrderServiceImpl implements OrderService{
         order.setOrderCategory(theCategory);
 
         orderSource.addOrder(order);
+    }
+
+    // Just call the staticMethod
+    public void setStatic() {
+        Order staticOrder=new Order();
+        staticOrder.setOrderQuantity(1);
+        staticOrder.setOrderCategory("whiteNoise");
+        System.out.println(StaticClass.staticMethod(staticOrder));
     }
 }

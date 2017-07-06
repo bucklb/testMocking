@@ -25,6 +25,9 @@ public class App
         // Might as well give it a modicum of data
         theOrderService.createOrder(69,"Condom");
 
+        // Trigger the staticMethd we want to powerMock
+        theOrderService.setStatic();
+
 
         String theOutcome =theOrderService.showOrders(1);
         System.out.println(theOutcome);

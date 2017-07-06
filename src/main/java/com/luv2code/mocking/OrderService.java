@@ -16,6 +16,8 @@ public interface OrderService {
     // allow an order to be created
     public void createOrder(long theQuantity, String theCategory );
 
+    // just want to allow static method to be called (so that I can powerMock it)
+    public void setStatic();
 
 
 
