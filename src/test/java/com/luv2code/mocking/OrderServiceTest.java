@@ -191,6 +191,19 @@ public class OrderServiceTest {
 
     }
 
+    @Test
+    public void test_staticMethod(){
+
+// Various attempts to prove to myself that mock only works with static if it's POWERmock
+
+        // Set up the mock.  Want the orders returned to be our list
+//        Mockito.when(StaticClass.staticMethod(Matchers.any(Order.class))).thenReturn("ha bloody ha");
+//        Mockito.when(StaticClass.staticMethod(any(Order.class))).thenReturn("ha bloody ha");
+//        Mockito.when(StaticClass.staticMethod(Mockito.anyObject())).thenReturn("ha bloody ha");
+
+
+
+    }
 
 
 
